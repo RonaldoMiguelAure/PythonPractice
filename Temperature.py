@@ -8,23 +8,26 @@ while True:
     else:
         break
         # valid temperature is entered, exit loop
+
 while True:
     try:
         unit = input("Is that in (C)elcius or (F)ahrenheit?: ")
     except ValueError:
         print("Sorry, I didn't understand that.")
         continue
-    if unit.upper() != "C" or "F":
-        print("Sorry, I didn't understand that.")
-    else:
+    if unit.upper() == "C":
+        converted_temperature = temperature
         break
-if unit.upper() == "F":
-    converted_temperature = (temperature - 32) * 5 / 9
-if unit.upper() == "C":
-    converted_temperature = temperature
+    elif unit.upper() == "F":
+        converted_temperature = (temperature - 32) * 5 / 9
+        break
+    else:
+        print("Sorry, I didn't understand that.")
+        continue
+
 if converted_temperature > 30:
     print("It's hot outside!")
-    print("I recommend drinking lots of water and using sunscreen.")
+    print("I recommend drinking lots of water to stay hydrated.")
 elif converted_temperature > 20:
     print("It's warm outside!")
     print("I recommend playing some soccer to enjoy the sun.")
