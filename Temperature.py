@@ -1,26 +1,36 @@
-temperature = float(input("What's the temperature outside?: "))
-unit = input("Is that in (C)elcius or (F)ahrenheit?: ")
-if unit.upper() == "C":
-    if temperature > 30:
-        print("It's a hot today!")
-        print("Drink plenty of water.")
-    elif temperature > 20:  # (20.30]
-        print("It's nice outside.")
-    elif temperature > 10:  # (10,20]
-        print("It's cool outside.")
+while True:
+    try:
+        temperature = float(input("Please enter the temperature outside:"))
+    except ValueError:
+        print("Sorry, I didn't understand that.")
+        # repeat loop until valid temperature is entered
+        continue
     else:
-        print("It's cold outside!")
-        print("Don't forget to bring a jacket.")
-
+        break
+        # valid temperature is entered, exit loop
+while True:
+    try:
+        unit = input("Is that in (C)elcius or (F)ahrenheit?: ")
+    except ValueError:
+        print("Sorry, I didn't understand that.")
+        continue
+    if unit.upper() != "C" or "F":
+        print("Sorry, I didn't understand that.")
+    else:
+        break
 if unit.upper() == "F":
-    if temperature > 86:
-        print("It's a hot today!")
-        print("Drink plenty of water.")
-    elif temperature > 68:  # (20.30]
-        print("It's nice outside.")
-    elif temperature > 50:  # (10,20]
-        print("It's cool outside.")
-    else:
-        print("It's cold outside!")
-        print("Don't forget to bring a jacket.")
-
+    converted_temperature = (temperature - 32) * 5 / 9
+if unit.upper() == "C":
+    converted_temperature = temperature
+if converted_temperature > 30:
+    print("It's hot outside!")
+    print("I recommend drinking lots of water and using sunscreen.")
+elif converted_temperature > 20:
+    print("It's warm outside!")
+    print("I recommend playing some soccer to enjoy the sun.")
+elif converted_temperature > 0:
+    print("It's nice outside")
+    print("I recommend eating on the patio to enjoy the cool weather.")
+else:
+    print("It's cold outside!")
+    print("I recommend you wear a jacket when you go out.")
